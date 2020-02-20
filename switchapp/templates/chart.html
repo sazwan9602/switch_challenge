@@ -5,27 +5,26 @@
 {% block content %}
 
 <div class="row">
-	
 	<div class="col-xl-12 col-lg-12">
-
+		<p>The charts are listed with latest date available. Please select date below to view other dates.</p>
 		<form action="{% url 'chart' %}" method="post" enctype="multipart/form-data" >
-		{% csrf_token %}
-		<label >Select Date (select one):</label>
-		<table>
-			<tr>
-				<td>
-					<div class="form-group" style="margin-bottom:0">
-						<select class="form-control" name="dates">
-							{% for date in select_date %}
-							<option value="{{ date.date|date:'Y-n-d' }}">{{ date.date }}</option>
-							{% endfor %}
-						</select>
-					</div>
-				</td>
-				<td><input type="submit" value="Submit" class="btn btn-primary"></td>
-			</tr>
-		</table>
-	</form>
+			{% csrf_token %}
+			<label >Select Date:</label>
+			<table>
+				<tr>
+					<td>
+						<div class="form-group" style="margin-bottom:0">
+							<select class="form-control" name="dates">
+								{% for date in select_date %}
+								<option value="{{ date.date|date:'Y-n-d' }}">{{ date.date }}</option>
+								{% endfor %}
+							</select>
+						</div>
+					</td>
+					<td><input type="submit" value="Submit" class="btn btn-primary"></td>
+				</tr>
+			</table>
+		</form>
 		<!-- switch 1 -->
 		<br>
 		<div class="card shadow mb-4">

@@ -3,5 +3,123 @@
 {% block h1 %}Dashboard{% endblock %}
 
 {% block content %}
+<!-- Content Row -->
+<p>Some info of all 3 switches.</p>
+<div class="row">
+	<!-- First Column -->
+	<div class="col-lg-4">
+		<!-- Custom Text Color Utilities -->
+		<div class="card shadow mb-4 border-bottom-info">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Switch 1 Record</h6>
+			</div>
+			<div class="card-body animated--grow-in" style="text-align: center">
+				<div class="px-3 py-5 bg-gradient-success text-white rounded">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Successful Ping Count</div>
+							<div class="h5 mb-0 font-weight-bold">{{ count_sw1_success }}</div>
+						</div>
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Average</div>
+							<div class="h5 mb-0 font-weight-bold">{{ avg_sw1_success }}%</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="px-3 py-5 bg-gradient-danger text-white rounded">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Failed Ping Count</div>
+							<div class="h5 mb-0 font-weight-bold">{{ count_sw1_failed }}</div>
+						</div>
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Average</div>
+							<div class="h5 mb-0 font-weight-bold">{{ avg_sw1_failed }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 
+	</div>
+
+	<!-- Second Column -->
+	<div class="col-lg-4">
+
+		<!-- Background Gradient Utilities -->
+		<div class="card shadow mb-4 border-bottom-info">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Switch 2 Record</h6>
+			</div>
+			<div class="card-body animated--grow-in" style="text-align: center">
+				<div class="px-3 py-5 bg-gradient-success text-white rounded">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Successful Ping Count</div>
+							<div class="h5 mb-0 font-weight-bold">{{ count_sw2_success }}</div>
+						</div>
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Average</div>
+							<div class="h5 mb-0 font-weight-bold">{{ avg_sw2_success }}%</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="px-3 py-5 bg-gradient-danger text-white rounded">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Failed Ping Count</div>
+							<div class="h5 mb-0 font-weight-bold">{{ count_sw2_failed }}</div>
+						</div>
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Average</div>
+							<div class="h5 mb-0 font-weight-bold">{{ avg_sw2_failed }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Third Column -->
+	<div class="col-lg-4">
+
+		<!-- Grayscale Utilities -->
+		<div class="card shadow mb-4 border-bottom-info">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Switch 3 Record</h6>
+			</div>
+			<div class="card-body animated--grow-in" style="text-align: center">
+				<div class="px-3 py-5 bg-gradient-success text-white rounded">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Successful Ping Count</div>
+							<div class="h5 mb-0 font-weight-bold">{{ count_sw3_success }}</div>
+						</div>
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Average</div>
+							<div class="h5 mb-0 font-weight-bold">{{ avg_sw3_success }}%</div>
+						</div>
+					</div>
+				</div>
+				<hr>
+				<div class="px-3 py-5 bg-gradient-danger text-white rounded">
+					<div class="row no-gutters align-items-center">
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Failed Ping Count</div>
+							<div class="h5 mb-0 font-weight-bold">{{ count_sw3_failed }}</div>
+						</div>
+						<div class="col mr-2">
+							<div class="text-s font-weight-bold">Average</div>
+							<div class="h5 mb-0 font-weight-bold">{{ avg_sw3_failed }}%</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
 {% endblock %}
