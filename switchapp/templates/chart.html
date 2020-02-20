@@ -1,0 +1,195 @@
+{% extends "base.html" %}
+{% block head_title %}Charts{% endblock %}
+{% block h1 %}Switch Charts{% endblock %}
+
+{% block content %}
+
+<div class="row">
+	
+	<div class="col-xl-12 col-lg-12">
+
+		<form action="{% url 'chart' %}" method="post" enctype="multipart/form-data" >
+		{% csrf_token %}
+		<label >Select Date (select one):</label>
+		<table>
+			<tr>
+				<td>
+					<div class="form-group" style="margin-bottom:0">
+						<select class="form-control" name="dates">
+							{% for date in select_date %}
+							<option value="{{ date.date|date:'Y-n-d' }}">{{ date.date }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</td>
+				<td><input type="submit" value="Submit" class="btn btn-primary"></td>
+			</tr>
+		</table>
+	</form>
+		<!-- switch 1 -->
+		<br>
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Switch 1 {{ date_sw1 }}</h6>
+			</div>
+			<div class="card-body">
+				<div id="chart1"></div>
+			</div>
+		</div>
+
+		<!-- Switch 2 -->
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Switch 2 {{ date_sw1 }}</h6>
+			</div>
+			<div class="card-body">
+				<div id="chart2"></div>
+			</div>
+		</div>
+
+		<!-- Switch 3 -->
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">Switch 3 {{ date_sw1 }}</h6>
+			</div>
+			<div class="card-body">
+				<div id="chart3"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+	$(document).ready( function () {
+
+		
+		switch1_chart();
+		switch2_chart();
+		switch3_chart();
+
+		
+
+		function switch1_chart() {
+			// get serialized query from view
+			var switch_1_data = JSON.parse('{{ switch_1|safe }}');
+			var trace = {
+				x: [],
+				y: [],
+				type: 'scatter',
+				mode: "lines",
+			};
+
+			switch_1_data.forEach(function(val) {
+				trace.x.push(val["fields"]["timestamp"]);
+				trace.y.push(val["fields"]["switch_status"]);
+			});
+
+			var layout = { 
+				// font: {size: 10},
+				title: 'SW-S1 Ping Availability',
+				height: 350,
+				xaxis: {
+
+					ticklen: 8,
+					tickwidth: 4,
+					type: 'date',
+					tickformat: '%H:%M',
+					tickangle: 90,
+					title: {
+						text: "Time",
+						standoff: 40,
+					}
+				},
+
+			};
+
+			var config = {responsive: true}
+			Plotly.newPlot('chart1', [trace], layout, config );
+		}
+
+		function switch2_chart() {
+			// get serialized query from view
+			var switch_2_data = JSON.parse('{{ switch_2|safe }}');
+			var trace = {
+				x: [],
+				y: [],
+				type: 'scatter',
+				mode: "lines",
+			};
+
+			switch_2_data.forEach(function(val) {
+				trace.x.push(val["fields"]["timestamp"]);
+				trace.y.push(val["fields"]["switch_status"]);
+			});
+			console.log(trace)
+
+			var layout = { 
+				// font: {size: 10},
+				title: 'SW-S2 Ping Availability',
+				height: 350,
+				xaxis: {
+
+					ticklen: 8,
+					tickwidth: 4,
+					type: 'date',
+					tickformat: '%H:%M',
+					tickangle: 90,
+					title: {
+						text: "Time",
+						standoff: 40,
+					}
+				},
+
+			};
+
+			var config = {responsive: true}
+			Plotly.newPlot('chart2', [trace], layout, config );
+		}
+
+		function switch3_chart() {
+			// get serialized query from view
+			var switch_3_data = JSON.parse('{{ switch_3|safe }}');
+			var trace = {
+				x: [],
+				y: [],
+				type: 'scatter',
+				mode: "lines",
+			};
+
+			switch_3_data.forEach(function(val) {
+				trace.x.push(val["fields"]["timestamp"]);
+				trace.y.push(val["fields"]["switch_status"]);
+			});
+			console.log(trace)
+
+			var layout = { 
+				// font: {size: 10},
+				title: 'SW-S3 Ping Availability',
+				height: 350,
+				xaxis: {
+
+					ticklen: 8,
+					tickwidth: 4,
+					type: 'date',
+					tickformat: '%H:%M',
+					tickangle: 90,
+					title: {
+						text: "Time",
+						standoff: 40,
+					}
+				},
+
+			};
+
+			var config = {responsive: true}
+			Plotly.newPlot('chart3', [trace], layout, config );
+		}
+
+		
+
+
+	} );
+</script>
+{% endblock %}

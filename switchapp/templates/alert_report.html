@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block head_title %}Alert Report{% endblock %}
+{% block h1 %}Alert Report{% endblock %}
+
+{% block content %}
+<p class="mb-4">This records shows the switches that are not reachable.</p>
+<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">Switch Report</h6>
+	</div>
+	<div class="card-body">
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered" id="dataTable" width="100%" cellspacing="0">
+				<thead class="thead-dark">
+					<tr>
+						<th class="text-center">ID</th>
+						<th class="text-center">Switch</th>
+						<th class="text-center">Alert Type</th>
+						<th class="text-center">Alert Date/Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for switch in switch_var %}
+					<tr>
+						<th class="text-center">{{ switch.id }}</th>
+						<td class="text-center">SW-{{ switch.name }}</td>
+						<td class="text-center">{{ switch.switch_status|yesno:",Ping Lost" }}</td>
+						<td class="text-center">{{ switch.timestamp }}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
+{% block scripts %}
+<script>
+  $(document).ready(function() {
+  $('#dataTable').DataTable({
+  	"order": [],
+  	"pageLength": 15,
+  	"lengthChange": false,
+
+  });
+});
+
+</script>
+{% endblock %}
+
+
+
